@@ -1,0 +1,46 @@
+{
+  "id": "alpine-nvm",
+  "name": "alpine-nvm",
+  "version": "1.0.0",
+  "description": "Installs Node Version Manager (NVM) on Alpine Linux",
+  "options": {
+    "nodeBuildDependencies": {
+      "type": "boolean",
+      "default": false,
+      "description": "Install build dependencies for Node.js"
+    },
+    "nodeBuildSource": {
+      "type": "boolean",
+      "default": false,
+      "description": "Build Node.js from source if nodeVersion is not 'none'"
+    },
+    "nodeVersion": {
+      "type": "string",
+      "proposals": [
+        "lts",
+        "latest",
+        "none",
+        "18",
+        "16",
+        "14"
+      ],
+      "default": "none",
+      "description": "Node.js version to pre-install: 'lts', 'latest', 'none', or a specific version"
+    },
+    "nvmInstallPath": {
+      "type": "string",
+      "default": "/usr/local/share/nvm",
+      "description": "Path to install NVM"
+    },
+    "nvmVersion": {
+      "type": "string",
+      "default": "latest",
+      "description": "NVM version to install: exact version or 'latest'"
+    }
+  },
+  "containerEnv": {
+    "NVM_DIR": "/usr/local/share/nvm",
+    "NVM_SYMLINK_CURRENT": "true",
+    "PATH": "/usr/local/share/nvm/current/bin:${PATH}"
+  }
+}
